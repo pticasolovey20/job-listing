@@ -64,12 +64,12 @@ const JobItem = ({
 					...(Array.isArray(languages) ? languages : []),
 					...(Array.isArray(tools) ? tools : []),
 				].map((tool, index) => (
-					<span
+					<button
 						key={index}
-						className="p-2 px-3 rounded-sm text-lg font-bold text-primary-desaturated-dark-cyan bg-neutral-light-grayish-cyan-bg cursor-pointer"
+						className="p-2 px-3 rounded-sm text-lg font-bold text-primary-desaturated-dark-cyan bg-neutral-light-grayish-cyan-bg"
 					>
 						{tool}
-					</span>
+					</button>
 				))}
 			</div>
 		</div>

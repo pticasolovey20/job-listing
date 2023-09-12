@@ -1,10 +1,11 @@
 import Header from "../header";
+import Filter from "../filter";
 
 const Layout = ({ children }) => {
 	return (
-		<div className="min-h-screen flex flex-col">
+		<div className="relative min-h-screen flex flex-col">
 			<Header />
-			<main className="flex flex-1 bg-neutral-light-grayish-cyan-bg">{children}</main>
+			<main className="flex flex-1 flex-col bg-neutral-light-grayish-cyan-bg">{children}</main>
 		</div>
 	);
 };
