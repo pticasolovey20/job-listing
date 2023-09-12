@@ -60,7 +60,12 @@ const JobItem = ({
 				</div>
 			</div>
 			<div className="flex flex-wrap gap-4 pt-4 lg:pt-0 lg:justify-end">
-				{[role, level, ...languages, ...tools].map((tool, index) => (
+				{[
+					role,
+					level,
+					...(Array.isArray(languages) ? languages : []),
+					...(Array.isArray(tools) ? tools : []),
+				].map((tool, index) => (
 					<span
 						key={index}
 						className="p-2 px-3 rounded-sm text-lg font-bold text-primary-desaturated-dark-cyan bg-neutral-light-grayish-cyan-bg cursor-pointer"
