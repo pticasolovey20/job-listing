@@ -53,9 +53,7 @@ const JobItem = ({
 					<h2 className="text-[24px] font-bold text-neutral-very-dark-grayish-cyan">{position}</h2>
 
 					<div className="flex gap-4 text-lg text-neutral-dark-grayish-cyan">
-						<span>{postedAt}</span>
-						<span>{contract}</span>
-						<span>{location}</span>
+						<span>{postedAt}</span>|<span>{contract}</span>|<span>{location}</span>
 					</div>
 				</div>
 			</div>
