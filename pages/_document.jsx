@@ -5,7 +5,7 @@ const Document = () => {
 		<Html lang="en">
 			<Head />
 			<title>Job Listing Master</title>
-			<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+			<link rel="icon" href="/favicon.ico" />
 			<link
 				href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap"
 				rel="stylesheet"
