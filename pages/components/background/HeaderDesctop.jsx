@@ -1,12 +1,15 @@
-import React from "react";
-
 const HeaderDesctop = () => {
 	return (
-		<svg width="1440" height="156" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+		<svg
+			className="w-full"
+			viewBox="0 0 1440 156"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlnsXlink="http://www.w3.org/1999/xlink"
+		>
 			<defs>
 				<path id="a" d="M0 0h1440v156H0z" />
 			</defs>
-			<g fill="none" fillRule="evenodd">
+			<g className="!z-1" fill="none" fillRule="inherit">
 				<mask id="b" fill="#fff">
 					<use xlinkHref="#a" />
 				</mask>
