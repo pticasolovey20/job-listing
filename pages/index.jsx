@@ -6,7 +6,7 @@ import Filter from "./components/filter";
 import JobItem from "./components/job-item";
 
 export const getServerSideProps = async () => {
-	const BASE_URL = `${process.env.NEXT_PUBLIC_APP_URL}/api/data`;
+	const BASE_URL = `http://${process.env.NEXT_PUBLIC_APP_URL}/api/data`;
 
 	try {
 		const response = await axios.get(BASE_URL);
