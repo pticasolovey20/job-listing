@@ -4,16 +4,16 @@ const Filter = () => {
 	const tools = ["HTML", "CSS", "JavaScript", "Python", "Ruby", "React", "Sass", "Django", "Vue", "RoR"];
 
 	return (
-		<div className="relative -top-12 flex justify-center">
+		<div className="relative -top-[60px] sm:-top-10 flex justify-center">
 			<div
 				className={classNames(
 					"w-[95%] lg:w-[90%] xl:w-[80%]",
-					"flex justify-between gap-6 p-6 rounded-md bg-white",
+					"flex justify-between gap-3 p-4 rounded-md bg-white",
 					"shadow-md shadow-neutral-light-light-grayish-cyan-filter"
 				)}
 			>
-				<div className="flex flex-wrap gap-6">
-					{tools.slice(0, 3).map((tool, index) => (
+				<div className="flex flex-wrap gap-3">
+					{tools.slice(0, 6).map((tool, index) => (
 						<span
 							key={index}
 							className={classNames(

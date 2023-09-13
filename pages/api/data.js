@@ -1,4 +1,4 @@
-export const data = [
+const data = [
 	{
 		id: 1,
 		company: "Photosnap",
@@ -150,3 +150,14 @@ export const data = [
 		tools: ["React", "Sass"],
 	},
 ];
+
+const handler = async (request, response) => {
+	try {
+		response.status(200).json(data);
+	} catch (error) {
+		console.error(error);
+		response.status(500).json({ error: "Error while receiving data" });
+	}
+};
+
+export default handler;

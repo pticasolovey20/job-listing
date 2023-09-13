@@ -1,11 +1,33 @@
-import { data } from "@/constants";
+import axios from "axios";
 import { classNames } from "@/utils";
 
 import Layout from "./components/layout";
 import Filter from "./components/filter";
 import JobItem from "./components/job-item";
 
-const Home = () => {
+export const getServerSideProps = async () => {
+	const BASE_URL = "http://localhost:3006/api/data";
+
+	try {
+		const response = await axios.get(BASE_URL);
+
+		return {
+			props: {
+				data: response.data,
+			},
+		};
+	} catch (error) {
+		console.error("An error occured", error);
+
+		return {
+			props: {
+				data: [],
+			},
+		};
+	}
+};
+
+const Home = ({ data }) => {
 	return (
 		<Layout>
 			<Filter />
@@ -16,9 +38,7 @@ const Home = () => {
 					"gap-16 lg:gap-8 shadow-md shadow-neutral-light-light-grayish-cyan-filter"
 				)}
 			>
-				{data.map((job) => (
-					<JobItem key={job.id} {...job} />
-				))}
+				{data && data.map((job) => <JobItem key={job.id} {...job} />)}
 			</div>
 		</Layout>
 	);
