@@ -38,7 +38,7 @@ const Home = ({ data }) => {
 					"gap-16 lg:gap-8 shadow-md shadow-neutral-light-light-grayish-cyan-filter"
 				)}
 			>
-				{data && data.map((job) => <JobItem key={job.id} {...job} />)}
+				{data && data?.map((job) => <JobItem key={job.id} {...job} />)}
 			</div>
 		</Layout>
 	);
