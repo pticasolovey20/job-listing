@@ -1,5 +1,7 @@
-import Image from "next/image";
+import { useApp } from "@/context/AppContext";
 import { classNames } from "@/utils";
+import { v4 as uuidv4 } from "uuid";
+import Image from "next/image";
 
 const JobItem = ({
 	company,
@@ -15,6 +17,19 @@ const JobItem = ({
 	languages,
 	tools,
 }) => {
+	const { filters, setFilters } = useApp();
+
+	const handleRoleFilter = (role) => setFilters({ ...filters, role });
+
+	const handleLevelFilter = (level) => setFilters({ ...filters, level });
+
+	const handleAddToolToFilters = (tool) => {
+		if (!filters.tools.some((existingTool) => existingTool.name === tool.name)) {
+			const newTools = [...filters.tools, tool];
+			setFilters({ ...filters, tools: newTools });
+		}
+	};
+
 	return (
 		<div
 			className={classNames(
@@ -58,25 +73,46 @@ const JobItem = ({
 				</div>
 			</div>
 			<div className="flex flex-wrap gap-4 pt-4 lg:pt-0 lg:justify-end">
-				{[
-					role,
-					level,
-					...(Array.isArray(languages) ? languages : []),
-					...(Array.isArray(tools) ? tools : []),
-				].map((tool, index) => (
-					<button
-						key={index}
-						className={classNames(
-							"flex items-center p-2 rounded-md duration-200",
-							"leading-none font-bold text-primary-desaturated-dark-cyan",
-							"bg-neutral-light-grayish-cyan-bg",
-							"hover:text-white hover:bg-primary-desaturated-dark-cyan"
-						)}
-						onClick={() => {}}
-					>
-						{tool}
-					</button>
-				))}
+				<button
+					className={classNames(
+						"flex items-center p-2 rounded-md duration-200",
+						"leading-none font-bold text-primary-desaturated-dark-cyan",
+						"bg-neutral-light-grayish-cyan-bg",
+						"hover:text-white hover:bg-primary-desaturated-dark-cyan"
+					)}
+					onClick={() => handleRoleFilter({ name: role, id: uuidv4(), type: "role" })}
+				>
+					{role}
+				</button>
+
+				<button
+					className={classNames(
+						"flex items-center p-2 rounded-md duration-200",
+						"leading-none font-bold text-primary-desaturated-dark-cyan",
+						"bg-neutral-light-grayish-cyan-bg",
+						"hover:text-white hover:bg-primary-desaturated-dark-cyan"
+					)}
+					onClick={() => handleLevelFilter({ name: level, id: uuidv4(), type: "level" })}
+				>
+					{level}
+				</button>
+
+				{[...(Array.isArray(languages) ? languages : []), ...(Array.isArray(tools) ? tools : [])].map(
+					(tool, index) => (
+						<button
+							key={index}
+							className={classNames(
+								"flex items-center p-2 rounded-md duration-200",
+								"leading-none font-bold text-primary-desaturated-dark-cyan",
+								"bg-neutral-light-grayish-cyan-bg",
+								"hover:text-white hover:bg-primary-desaturated-dark-cyan"
+							)}
+							onClick={() => handleAddToolToFilters({ name: tool, id: uuidv4(), type: "tools" })}
+						>
+							{tool}
+						</button>
+					)
+				)}
 			</div>
 		</div>
 	);
