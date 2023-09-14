@@ -53,9 +53,7 @@ const JobItem = ({
 					<h2 className="text-[24px] font-bold text-neutral-very-dark-grayish-cyan">{position}</h2>
 
 					<div className="flex gap-4 text-lg text-neutral-dark-grayish-cyan">
-						<span>{postedAt}</span>
-						<span>{contract}</span>
-						<span>{location}</span>
+						<span>{postedAt}</span>|<span>{contract}</span>|<span>{location}</span>
 					</div>
 				</div>
 			</div>
@@ -66,12 +64,18 @@ const JobItem = ({
 					...(Array.isArray(languages) ? languages : []),
 					...(Array.isArray(tools) ? tools : []),
 				].map((tool, index) => (
-					<span
+					<button
 						key={index}
-						className="p-2 px-3 rounded-sm text-lg font-bold text-primary-desaturated-dark-cyan bg-neutral-light-grayish-cyan-bg cursor-pointer"
+						className={classNames(
+							"flex items-center p-2 rounded-md duration-200",
+							"leading-none font-bold text-primary-desaturated-dark-cyan",
+							"bg-neutral-light-grayish-cyan-bg",
+							"hover:text-white hover:bg-primary-desaturated-dark-cyan"
+						)}
+						onClick={() => {}}
 					>
 						{tool}
-					</span>
+					</button>
 				))}
 			</div>
 		</div>

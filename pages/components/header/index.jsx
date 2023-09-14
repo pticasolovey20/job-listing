@@ -1,7 +1,7 @@
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-
 import HeaderDesctop from "../background/HeaderDesctop";
 import HeaderMobile from "../background/HeaderMobile";
+import Filter from "../filter";
 
 const Header = () => {
 	const { matches: minWidth } = useMediaQuery("min-width", 576);
