@@ -66,7 +66,13 @@ const JobItem = ({
 				].map((tool, index) => (
 					<button
 						key={index}
-						className="p-2 px-3 rounded-sm text-lg font-bold text-primary-desaturated-dark-cyan bg-neutral-light-grayish-cyan-bg"
+						className={classNames(
+							"p-2 rounded-md duration-200",
+							"leading-none font-bold text-primary-desaturated-dark-cyan",
+							"bg-neutral-light-grayish-cyan-bg",
+							"hover:text-white hover:bg-primary-desaturated-dark-cyan"
+						)}
+						onClick={() => {}}
 					>
 						{tool}
 					</button>
