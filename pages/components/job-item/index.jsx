@@ -67,7 +67,7 @@ const JobItem = ({
 					<button
 						key={index}
 						className={classNames(
-							"p-2 rounded-md duration-200",
+							"flex items-center p-2 rounded-md duration-200",
 							"leading-none font-bold text-primary-desaturated-dark-cyan",
 							"bg-neutral-light-grayish-cyan-bg",
 							"hover:text-white hover:bg-primary-desaturated-dark-cyan"
