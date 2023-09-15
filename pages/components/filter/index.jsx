@@ -1,26 +1,21 @@
-import React, { FC, useCallback } from "react";
+import { useCallback } from "react";
 import { useApp } from "../../../context/AppContext";
 import { classNames } from "../../../utils";
 
 import RemoveIcon from "../icons/RemoveIcon";
-import { IFilters } from "../../../types";
 
-interface IFilterProps {
-	tools: { name: string; id: string; type: string }[];
-}
-
-const Filter: FC<IFilterProps> = ({ tools }: IFilterProps): JSX.Element => {
+const Filter = ({ tools }) => {
 	const { setFilters } = useApp();
 
 	const handleRemoveFilter = useCallback(
-		(filter: { id: string; type: string }) => {
-			setFilters((prevFilters: IFilters) => {
+		(filter) => {
+			setFilters((prevFilters) => {
 				if (filter.type === "role") {
-					return { ...prevFilters, role: { name: "", id: "", type: "" } };
+					return { ...prevFilters, role: null };
 				} else if (filter.type === "level") {
-					return { ...prevFilters, level: { name: "", id: "", type: "" } };
+					return { ...prevFilters, level: null };
 				} else {
-					const newTools = prevFilters.tools.filter((tool) => tool.id !== String(filter.id));
+					const newTools = prevFilters.tools.filter((tool) => tool.id !== filter.id);
 					return { ...prevFilters, tools: newTools };
 				}
 			});
@@ -30,8 +25,8 @@ const Filter: FC<IFilterProps> = ({ tools }: IFilterProps): JSX.Element => {
 
 	const handleClearFilters = () => {
 		setFilters({
-			role: { name: "", id: "", type: "" },
-			level: { name: "", id: "", type: "" },
+			role: null,
+			level: null,
 			tools: [],
 		});
 	};
