@@ -1,10 +1,9 @@
-import React, { FC } from "react";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 
 import HeaderDesctop from "../background/HeaderDesctop";
 import HeaderMobile from "../background/HeaderMobile";
 
-const Header: FC = (): JSX.Element => {
+const Header = () => {
 	const { matches: minWidth } = useMediaQuery("min-width", 576);
 
 	return (

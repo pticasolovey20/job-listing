@@ -1,7 +1,6 @@
-import React, { FC, useCallback } from "react";
-import { useApp } from "../context/AppContext";
-import { classNames } from "../utils";
-import { IData } from "../types";
+import { useCallback } from "react";
+import { useApp } from "@/context/AppContext";
+import { classNames } from "@/utils";
 import axios from "axios";
 
 import Layout from "./components/layout";
@@ -30,17 +29,13 @@ export const getServerSideProps = async () => {
 	}
 };
 
-interface IHomeProps {
-	data: IData[];
-}
-
-const Home: FC<IHomeProps> = ({ data }: IHomeProps): JSX.Element => {
+const Home = ({ data }) => {
 	const { filters, filterValues } = useApp();
 	const { role, level, tools } = filters;
 
 	const applyFilters = useCallback(
-		(item: IData) => {
-			const roleMatches = (roleFilter: string | { name: string } | null) => {
+		(item) => {
+			const roleMatches = (roleFilter) => {
 				if (!roleFilter) {
 					return true;
 				} else if (typeof roleFilter === "object" && roleFilter.name) {
@@ -50,7 +45,7 @@ const Home: FC<IHomeProps> = ({ data }: IHomeProps): JSX.Element => {
 				return false;
 			};
 
-			const levelMatches = (levelFilter: string | { name: string } | null) => {
+			const levelMatches = (levelFilter) => {
 				if (!levelFilter) {
 					return true;
 				} else if (typeof levelFilter === "object" && levelFilter.name) {
@@ -60,7 +55,7 @@ const Home: FC<IHomeProps> = ({ data }: IHomeProps): JSX.Element => {
 				return false;
 			};
 
-			const toolsMatches = (toolFilters: { name: string }[] | string[]) => {
+			const toolsMatches = (toolFilters) => {
 				if (!toolFilters || !toolFilters.length) return true;
 
 				return toolFilters.every((toolFilter) => {

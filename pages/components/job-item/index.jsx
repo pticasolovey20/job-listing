@@ -1,25 +1,10 @@
-import { FC } from "react";
 import { useApp } from "../../../context/AppContext";
 import { classNames } from "../../../utils";
 import { v4 as uuidv4 } from "uuid";
+
 import Image from "next/image";
 
-interface IJobItem {
-	company: string;
-	logo: string;
-	isNew: boolean;
-	featured: boolean;
-	position: string;
-	role: string;
-	level: string;
-	postedAt: string;
-	contract: string;
-	location: string;
-	languages: string[];
-	tools: string[];
-}
-
-const JobItem: FC<IJobItem> = ({
+const JobItem = ({
 	company,
 	logo,
 	isNew,
@@ -32,14 +17,14 @@ const JobItem: FC<IJobItem> = ({
 	location,
 	languages,
 	tools,
-}: IJobItem): JSX.Element => {
+}) => {
 	const { filters, setFilters } = useApp();
 
-	const handleRoleFilter = (role: { name: string; id: string; type: string }) => setFilters({ ...filters, role });
+	const handleRoleFilter = (role) => setFilters({ ...filters, role });
 
-	const handleLevelFilter = (level: { name: string; id: string; type: string }) => setFilters({ ...filters, level });
+	const handleLevelFilter = (level) => setFilters({ ...filters, level });
 
-	const handleAddToolToFilters = (tool: { name: string; id: string; type: string }) => {
+	const handleAddToolToFilters = (tool) => {
 		if (!filters.tools.some((existingTool) => existingTool.name === tool.name)) {
 			const newTools = [...filters.tools, tool];
 			setFilters({ ...filters, tools: newTools });

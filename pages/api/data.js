@@ -1,7 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { IData } from "../../types";
-
-const data: IData[] = [
+const data = [
 	{
 		id: 1,
 		company: "Photosnap",
@@ -154,7 +151,7 @@ const data: IData[] = [
 	},
 ];
 
-const handler = async (request: NextApiRequest, response: NextApiResponse): Promise<void> => {
+const handler = async (request, response) => {
 	try {
 		response.status(200).json(data);
 	} catch (error) {
