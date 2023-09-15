@@ -1,4 +1,6 @@
-const HeaderDesctop = () => {
+import React, { FC } from "react";
+
+const HeaderDesctop: FC = (): JSX.Element => {
 	return (
 		<svg
 			className="w-full"

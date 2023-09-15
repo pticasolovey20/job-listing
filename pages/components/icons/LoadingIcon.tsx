@@ -1,4 +1,6 @@
-const LoadingIcon = () => {
+import React, { FC } from "react";
+
+const LoadingIcon: FC = (): JSX.Element => {
 	return (
 		<svg
 			aria-hidden="true"

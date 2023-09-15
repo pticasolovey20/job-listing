@@ -1,9 +1,25 @@
-import { useApp } from "@/context/AppContext";
-import { classNames } from "@/utils";
+import { FC } from "react";
+import { useApp } from "../../../context/AppContext";
+import { classNames } from "../../../utils";
 import { v4 as uuidv4 } from "uuid";
 import Image from "next/image";
 
-const JobItem = ({
+interface IJobItem {
+	company: string;
+	logo: string;
+	isNew: boolean;
+	featured: boolean;
+	position: string;
+	role: string;
+	level: string;
+	postedAt: string;
+	contract: string;
+	location: string;
+	languages: string[];
+	tools: string[];
+}
+
+const JobItem: FC<IJobItem> = ({
 	company,
 	logo,
 	isNew,
@@ -16,14 +32,14 @@ const JobItem = ({
 	location,
 	languages,
 	tools,
-}) => {
+}: IJobItem): JSX.Element => {
 	const { filters, setFilters } = useApp();
 
-	const handleRoleFilter = (role) => setFilters({ ...filters, role });
+	const handleRoleFilter = (role: { name: string; id: string; type: string }) => setFilters({ ...filters, role });
 
-	const handleLevelFilter = (level) => setFilters({ ...filters, level });
+	const handleLevelFilter = (level: { name: string; id: string; type: string }) => setFilters({ ...filters, level });
 
-	const handleAddToolToFilters = (tool) => {
+	const handleAddToolToFilters = (tool: { name: string; id: string; type: string }) => {
 		if (!filters.tools.some((existingTool) => existingTool.name === tool.name)) {
 			const newTools = [...filters.tools, tool];
 			setFilters({ ...filters, tools: newTools });
@@ -77,6 +93,7 @@ const JobItem = ({
 					className={classNames(
 						"flex items-center p-2 rounded-md duration-200",
 						"leading-none font-bold text-primary-desaturated-dark-cyan",
+						"shadow-sm shadow-neutral-dark-grayish-cyan",
 						"bg-neutral-light-grayish-cyan-bg",
 						"hover:text-white hover:bg-primary-desaturated-dark-cyan"
 					)}
@@ -89,6 +106,7 @@ const JobItem = ({
 					className={classNames(
 						"flex items-center p-2 rounded-md duration-200",
 						"leading-none font-bold text-primary-desaturated-dark-cyan",
+						"shadow-sm shadow-neutral-dark-grayish-cyan",
 						"bg-neutral-light-grayish-cyan-bg",
 						"hover:text-white hover:bg-primary-desaturated-dark-cyan"
 					)}
@@ -104,6 +122,7 @@ const JobItem = ({
 							className={classNames(
 								"flex items-center p-2 rounded-md duration-200",
 								"leading-none font-bold text-primary-desaturated-dark-cyan",
+								"shadow-sm shadow-neutral-dark-grayish-cyan",
 								"bg-neutral-light-grayish-cyan-bg",
 								"hover:text-white hover:bg-primary-desaturated-dark-cyan"
 							)}
