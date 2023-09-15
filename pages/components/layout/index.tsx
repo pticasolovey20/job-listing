@@ -1,6 +1,9 @@
+import { FC } from "react";
+import { WithChild } from "../../../types";
+
 import Header from "../header";
 
-const Layout = ({ children }) => {
+const Layout: FC<WithChild> = ({ children }: WithChild): JSX.Element => {
 	return (
 		<div className="relative min-h-screen flex flex-col">
 			<Header />

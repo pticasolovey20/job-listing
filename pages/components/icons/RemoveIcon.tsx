@@ -1,6 +1,6 @@
-import React from "react";
+import React, { FC } from "react";
 
-const RemoveIcon = () => {
+const RemoveIcon: FC = (): JSX.Element => {
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
 			<path
